@@ -2,12 +2,13 @@ version: "3.7"
 
 services:
   tbbrdet_api-testing:
-    image: vykozlov/uc-emvollmer-deep-oc-tbbrdet_api:base
-    working_dir: /srv
+    image: deephdc/cicd-uc-emvollmer-tbbrdet_api
+    # working_dir should be the same as the target directory
+    working_dir: /srv/tbbrdet_api
     volumes:
       - type: bind
         source: ./
-        target: /srv
+        target: /srv/tbbrdet_api
     command: sleep infinity
 
   tbbrdet_api-cpu:
@@ -16,8 +17,8 @@ services:
       dockerfile: "./docker/Dockerfile"
       args:
         tag: "base"
-        branch: "test"
-    image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:cpu"
+        branch: ${GIT_BRANCH}
+    image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:${CPU_TAG}"
 
   tbbrdet_api-gpu:
     build:
