@@ -1,6 +1,8 @@
+version: "3.7"
+
 services:
-  tbbrdet-testing:
-    image: deephdc/uc-emvollmer-deep-oc-tbbrdet_api:base
+  tbbrdet_api-testing:
+    image: vykozlov/uc-emvollmer-deep-oc-tbbrdet_api:base
     working_dir: /srv
     volumes:
       - type: bind
@@ -8,20 +10,20 @@ services:
         target: /srv
     command: sleep infinity
 
-  uc-emvollmer-deep-oc-tbbrdet_api-cpu:
-      build:
-        context: "."
-        dockerfile: "./docker/Dockerfile"
-        args:
-          tag: "base"
-          branch: ${GIT_BRANCH}
-      image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:${CPU_TAG}"
+  tbbrdet_api-cpu:
+    build:
+      context: "."
+      dockerfile: "./docker/Dockerfile"
+      args:
+        tag: "base"
+        branch: "test"
+    image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:cpu"
 
-  uc-emvollmer-deep-oc-tbbrdet_api-gpu:
-      build:
-        context: "."
-        dockerfile: "./docker/Dockerfile"
-        args:
-          tag: "base"
-          branch: ${GIT_BRANCH}
-      image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:${GPU_TAG}"
+  tbbrdet_api-gpu:
+    build:
+      context: "."
+      dockerfile: "./docker/Dockerfile"
+      args:
+        tag: "base"
+        branch: ${GIT_BRANCH}
+    image: "deephdc/uc-emvollmer-deep-oc-tbbrdet_api:${GPU_TAG}"
