@@ -1,3 +1,8 @@
+---
+# The Repository is ARCHIVED!
+### it is now maintained in https://github.com/ai4os-hub/thermal-bridges-rooftops-detector/
+---
+
 # tbbrdet_api
 [![Build Status](https://jenkins.services.ai4os.eu/buildStatus/icon?job=AI4OS-HUB-TEST%2Ftbbrdet_api%2Fmaster)](https://jenkins.services.ai4os.eu/job/AI4OS-HUB-TEST/job/tbbrdet_api/job/master/)
 
